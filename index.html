@@ -13,127 +13,116 @@
 
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <a class="navbar-brand" href="#">Navbar</a>
-        </div>
-    </nav>
-
-    <div class="container">
-        <h1>Coding Quiz Challenge</h1>
-        <p>Try to answer the following code-related questions within the time limit.
-            Keep in mind that incorrect answers will penalize your score/time by 10 seconds!
-        </p>
+    <div class="jumbotron">
+        <h1 class="display-4">Coding Quiz Challenge</h1>
+        <p id="counter">Try to answer the following code-related questions within the time limit.
+            Keep in mind that incorrect answers will penalize your score/time by 10 seconds!</p>
+        <hr class="my-4">
         <button id="start-quiz">Start Quiz</button>
-        <p id="counter"></p>
     </div>
 
+
     <div class="container">
-        <form id="question-one">
-            <p>Commonly used datatypes DO NOT include: </p>
+        <form id="question-one" style="display: none;">
+            <p>Commonly used datatypes DO NOT include:</p>
 
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="choice" id="choice" value="Strings" checked>
+                <input class="form-check-input" type="radio" name="q1choice" id="choice" value="Strings">
                 <label class="form-check-label" for="choice">
                     Strings
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="choice" id="choice" value="Booleans" checked>
+                <input class="form-check-input" type="radio" name="q1choice" id="choice" value="Booleans">
                 <label class="form-check-label" for="choice">
                     Booleans
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="choice" id="choice" value="Alerts" checked>
+                <input class="form-check-input" type="radio" name="q1choice" id="choice" value="Alerts">
                 <label class="form-check-label" for="choice">
                     Alerts
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="choice" id="choice" value="Numbers" checked>
+                <input class="form-check-input" type="radio" name="q1choice" id="choice" value="Numbers">
                 <label class="form-check-label" for="choice">
                     Numbers
                 </label>
             </div>
         </form>
     </div>
-    <br>
-    <br>
     <div class="container">
-        <form id="question-two">
+        <form id="question-two" style="display: none;">
             <p>Arrays in JavaSript can be used to store: </p>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="choice" id="choice" value="option1" checked>
+                <input class="form-check-input" type="radio" name="q2choice" id="choice" value="numbers and strings">
                 <label class="form-check-label" for="choice">
                     numbers and strings
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="choice" id="choice" value="option2" checked>
+                <input class="form-check-input" type="radio" name="q2choice" id="choice" value="other arrays">
                 <label class="form-check-label" for="choice">
                     other arrays
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="choice" id="choice" value="option3" checked>
+                <input class="form-check-input" type="radio" name="q2choice" id="choice" value="booleans">
                 <label class="form-check-label" for="choice">
                     booleans
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="choice" id="choice" value="option4" checked checked>
+                <input class="form-check-input" type="radio" name="q2choice" id="choice" value="all of the above">
                 <label class="form-check-label" for="choice">
                     all of the above
                 </label>
             </div>
         </form>
     </div>
-    <br>
-    <br>
     <div class="container">
-        <form id="question-three">
+        <form id="question-three" style="display: none;">
             <p>A very useful tool used during development and debugging for printing content to
                 the
                 debugger is:</p>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="choice" id="choice" value="option1" checked>
+                <input class="form-check-input" type="radio" name="q3choice" id="choice" value="JavaSript">
                 <label class="form-check-label" for="choice">
                     JavaSript
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="choice" id="choice" value="option2" checked>
+                <input class="form-check-input" type="radio" name="q3choice" id="choice" value="terminal/BASH">
                 <label class="form-check-label" for="choice">
                     terminal/Bash
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="choice" id="choice" value="option3" checked>
+                <input class="form-check-input" type="radio" name="q3choice" id="choice" value="for loops">
                 <label class="form-check-label" for="choice">
                     for loops
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="choice" id="choice" value="option4" checked checked>
+                <input class="form-check-input" type="radio" name="q3choice" id="choice" value="console.log">
                 <label class="form-check-label" for="choice">
                     console.log
                 </label>
             </div>
         </form>
     </div>
-    <br>
+    <div id="results" style="display: none;">
 
-    <h1>Quiz Complete!</h1>
-    <h2 id="final-results"></h2>
-    <form class="form-inline">
-        <div class="form-group mx-sm-3 mb-2">
-            <label for="inputPassword2" class="sr-only">Your Initials</label>
-            <input type="text" class="form-control" id="inputPassword2" placeholder="Initials">
-        </div>
-        <button type="submit" class="btn btn-primary mb-2">Save</button>
-    </form>
-    </div>
+        <h1>Quiz Complete!</h1>
+        <h2 id="final-results"></h2>
+        <form class="form-inline">
+            <div class="form-group mx-sm-3 mb-2">
+                <label class="sr-only">Your Initials</label>
+                <input type="text" id="Initials" placeholder="Initials">
+            </div>
+            <button id="savescore" class="btn btn-primary mb-2">Save</button>
+        </form>
     </div>
     <script src="script.js"></script>
 </body>
