@@ -2,37 +2,39 @@
 // WHEN I click the start button
 
 var timerId;
-var timeLeft;    
+var timeLeft;
 var counterElement = document.getElementById("counter");
 
 var questionOneEl = document.getElementById('question-one');
-var questionTwoEl = document.getElementById('question-two'); 
+var questionTwoEl = document.getElementById('question-two');
 var questionThreeEl = document.getElementById('question-three');
 var finalResultsEl = document.getElementById('results');
+var buttonEl = document.getElementById("start-quiz");
 
 // timer starts     
 function countdown() {
+  document.getElementById("start-quiz").style.display = "none";
   if (timeLeft == 0) {
     endGame();
   } else {
     counterElement.innerHTML = timeLeft + " seconds remaining";
     timeLeft--;
   }
-} 
+}
 
 // WHEN I answer a question incorrectly
 // THEN time is subtracted from the clock
 function wrongAnswer() {
-  timeLeft = timeLeft - 10; 
+  timeLeft = timeLeft - 10;
 }
 
 function showHideElement(element, show) {
-  show === true ? element.style.display = "block" : element.style.display = "none"; 
+  show === true ? element.style.display = "block" : element.style.display = "none";
 }
 
 function startGame() {
   clearInterval(timerId);
-  timeLeft = 75;  
+  timeLeft = 75;
   timerId = setInterval(countdown, 1000);
   showHideElement(counterElement, true);
   showHideElement(questionOneEl, true);
@@ -42,6 +44,13 @@ function startGame() {
   document.getElementById("final-results").innerHTML = "";
 
   showHideElement(finalResultsEl, false);
+
+   var radios = document.querySelectorAll('input[type=radio]');
+
+  for (var i = 0; i < radios.length; i++) {
+    radios[i].checked = false;
+  }
+ 
 }
 
 function endGame() {
@@ -50,67 +59,72 @@ function endGame() {
   showHideElement(questionTwoEl, false);
   showHideElement(questionThreeEl, false);
   showHideElement(counterElement, false);
-  
+
   document.getElementById("final-results").innerHTML = "Your final score: " + timeLeft;
 
   showHideElement(finalResultsEl, true);
 }
 
+
 function saveScore() {
-  sessionStorage.setItem(document.getElementById("Initials").value,timeLeft);
+  sessionStorage.setItem(document.getElementById("Initials").value, timeLeft);
 }
 
 document.getElementById("start-quiz").addEventListener("click", startGame);
 document.getElementById("savescore").addEventListener("click", saveScore);
 
 
+
 // WHEN I answer a question correctly
 // THEN I am presented with another question
 var q1radios = document.querySelectorAll('input[type=radio][name="q1choice"]');
 for (var i = 0; i < q1radios.length; i++) {
-  q1radios[i].addEventListener("change", 
-    function() {
-        console.log(this.value);
-      if (this.value == "Alerts"){
+  q1radios[i].addEventListener("change",
+    function () {
+      console.log(this.value);
+      if (this.value == "Alerts") {
         showHideElement(questionOneEl, false);
         showHideElement(questionTwoEl, true);
       }
       else {
         wrongAnswer();
+        document.getElementById("wrongchoice1").innerHTML = "try again!";
       }
     });
-} 
+}
 
 // WHEN I answer a question correctly
 // THEN I am presented with another question
 var q2radios = document.querySelectorAll('input[type=radio][name="q2choice"]');
 for (var i = 0; i < q2radios.length; i++) {
-  q2radios[i].addEventListener("change", 
-    function() {
-        console.log(this.value);
-      if (this.value == "all of the above"){
+  q2radios[i].addEventListener("change",
+    function () {
+      console.log(this.value);
+      if (this.value == "all of the above") {
         showHideElement(questionTwoEl, false);
         showHideElement(questionThreeEl, true);
       }
       else {
         wrongAnswer();
+        document.getElementById("wrongchoice2").innerHTML = "try again!";
       }
     });
-} 
+}
 
 var q3radios = document.querySelectorAll('input[type=radio][name="q3choice"]');
 for (var i = 0; i < q3radios.length; i++) {
-  q3radios[i].addEventListener("change", 
-    function() {
-        console.log(this.value);
-      if (this.value == "console.log"){
+  q3radios[i].addEventListener("change",
+    function () {
+      console.log(this.value);
+      if (this.value == "console.log") {
         endGame();
       }
       else {
         wrongAnswer();
+        document.getElementById("wrongchoice3").innerHTML = "try again!";
       }
     });
-} 
+}
 
 // WHEN all questions are answered or the timer reaches 0
 // THEN the game is over

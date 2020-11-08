@@ -1,0 +1,19 @@
+
+header {
+  text-align: center;
+  padding: 20px;
+  padding-top: 0px;
+  color: black;
+}
+
+body {
+  font-family: sans-serif;
+  background-color: #f9fbfd;
+
+  padding: 20px;
+  padding-top: 0px;
+}
+
+.container {
+    padding-left: 400px;
+}
