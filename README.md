@@ -34,8 +34,8 @@ THEN I can save my initials and score
 > This assignment proved once again to be very challenging.  I found myself having some "ah ha!" moments on this project.  I hope that you enjoy my brief coding quiz. 
 <img src= /quizhtml.png>
 <img src= /quizjs.png>
-<img src= /quizimg.png>
-<img src= /quizimg2.png>
+<img src= /quizimg.PNG>
+<img src= /quizimg2.PNG>
 <img src= /quizimg3.png>
 
 
